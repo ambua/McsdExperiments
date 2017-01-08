@@ -32,7 +32,7 @@ namespace McsdExperiments.Controllers
         public ActionResult Index(UserDataViewModel user)
         {
 
-            return View();
+            return Json(user);
         }
     }
 }

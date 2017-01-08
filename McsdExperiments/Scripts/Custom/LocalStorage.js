@@ -1,6 +1,4 @@
-﻿(function ()
-{
-    $(document).ready(function () {
+﻿$(function () {
         var storage = window.localStorage;
         $("#Button1").click(function (evt) {
             storage.setItem("fullname", $("#TextBox1").val());
@@ -27,14 +25,20 @@
             options.data = JSON.stringify({ "data": data });
             options.dataType = "json";
             options.contentType = "application/json";
-            options.success = function (result) { $("#Label3").html(result.d); };
-            options.error = function (err) {
-                $("#Label3").html("Error invoking the web method!" +err);
+            options.success = function (result) {
+                $("#Label3").html(result);
+        };
+
+
+            options.error = function (xhr, err) {
+                var msg = "readyState: " + xhr.readyState + "\nstatus: " + xhr.status;
+                msg += "responseText: " + xhr.responseText;
+                $("#Label3").html("Error invoking the web method!" + msg);
             };
 
-            $.ajax(options);
+            $.ajax(options).done(function(data){
+                $("#Label3").html(data);
+            });
             evt.preventDefault();
         });
     });
-})();
-

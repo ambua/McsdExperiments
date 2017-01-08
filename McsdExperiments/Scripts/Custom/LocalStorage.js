@@ -22,7 +22,7 @@
             var options = {};
             options.url = "Home/Index";
             options.type = "POST";
-            options.data = JSON.stringify({ "data": data });
+            options.data = JSON.stringify(data);
             options.dataType = "json";
             options.contentType = "application/json";
             options.success = function (result) {

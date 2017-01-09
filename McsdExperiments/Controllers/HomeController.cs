@@ -11,7 +11,7 @@ namespace McsdExperiments.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View(new HomeViewModel());
         }
 
         public ActionResult About()
@@ -33,6 +33,13 @@ namespace McsdExperiments.Controllers
         {
 
             return Json(user);
+        }
+
+        [HttpPost]
+        public ActionResult ProcessSlider(HomeViewModel model)
+        {
+            model.SliderPosition += 10;
+            return View("Index",model);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model McsdExperiments.Models.ViewModels.HomeViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 <div class="jumbotron">
@@ -26,9 +27,15 @@
                     <input type="submit" id="Button3" value="Save to server via ajax" class="btn btn-success" />
                 </div>
             </div>
-
         </form>
-
+    </div>
+    <div class="row">
+        <h1>Slider (@Model.SliderPosition)</h1>
+        @using (Html.BeginForm("ProcessSlider","Home"))
+        {
+            @Html.TextBoxFor(m => m.SliderPosition, new { @type = "range" });
+            <input type="submit" class="btn btn-primary" value="Process on Server" />
+        }
     </div>
 </div>
 }

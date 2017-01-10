@@ -1,0 +1,9 @@
+﻿/*
+    Custom styles for home views.
+*/
+
+@media Screen and (min-width : 500px) {
+    .custom-image-quiz {
+        display: none;
+    }
+}

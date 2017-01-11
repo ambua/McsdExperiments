@@ -12,6 +12,7 @@
             data.FullName = storage.getItem("fullname");
             data.Email = storage.getItem("email");
             $("#HiddenField1").val(JSON.stringify(data));
+            $("#Label3").html("Success storing data in HiddenField1");
         });
 
         $("#Button3").click(function (evt) {
@@ -26,7 +27,9 @@
             options.dataType = "json";
             options.contentType = "application/json";
             options.success = function (result) {
-                $("#Label3").html(result);
+                $("#Label3").html("Success posting to server");
+                var $element = $("#jsonContent")
+                $element.text(JSON.stringify(result));
         };
 
 
@@ -37,8 +40,9 @@
             };
 
             $.ajax(options).done(function(data){
-                $("#Label3").html(data);
+                $("#Label3").html(data.d);
             });
             evt.preventDefault();
+            return false;
         });
     });
